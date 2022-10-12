@@ -235,24 +235,24 @@ def solve_distinct_disks(length, n):
             # One step forward movement
             if i < length - 1 and current_disks[i] != 0 and current_disks[i+1] == 0:
                 new_moves, new_disks = move_disks(1, i)
-                PQ.put((1 + h(new_disks), new_moves, new_disks))
+                PQ.put((cost + h(new_disks), new_moves, new_disks))
 
             # Two steps forward movement
             if i < length - 2 and current_disks[i] != 0 and current_disks[i + 1] != 0 and current_disks[i + 2] == 0:
                 new_moves, new_disks = move_disks(2, i)
-                PQ.put((1 + h(new_disks), new_moves, new_disks))
+                PQ.put((cost + h(new_disks), new_moves, new_disks))
 
             # One step backward movement
             if i > 0 and current_disks[i] != 0 and current_disks[i - 1] == 0:
                 new_moves, new_disks = move_disks(-1, i)
-                PQ.put((1 + h(new_disks), new_moves, new_disks))
+                PQ.put((cost + h(new_disks), new_moves, new_disks))
 
             # Two steps backward movement
             if i > 1 and current_disks[i] != 0 and current_disks[i - 1] != 0 and current_disks[i - 2] == 0:
                 new_moves, new_disks = move_disks(-2, i)
-                PQ.put((1 + h(new_disks), new_moves, new_disks))
+                PQ.put((cost + h(new_disks), new_moves, new_disks))
     return None
-
+# print(solve_distinct_disks(11,5))
 ############################################################
 # Section 4: Dominoes Game
 ############################################################
